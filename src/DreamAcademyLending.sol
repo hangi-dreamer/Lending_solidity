@@ -1,6 +1,10 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.13;
 
+interface IPriceOracle {
+    function setPrice(address token, uint256 price) external returns (uint);
+}
+
 
 contract DreamOracle {
    address public operator;
@@ -25,10 +29,13 @@ contract DreamOracle {
 }
 
 contract DreamAcademyLending {
-    function deposit(address tokenAddress, uint256 amount) external;
-    function borrow(address tokenAddress, uint256 amount) external;
-    function repay(address tokenAddress, uint256 amount) external;
-    function liquidate(address user, address tokenAddress, uint256 amount) external;
-    function withdraw(address tokenAddress, uint256 amount) external;
+    constructor (IPriceOracle oracle, address token) {}
+    function initializeLendingProtocol(address token) payable external {}
+    function deposit(address tokenAddress, uint256 amount) payable external {}
+    function borrow(address tokenAddress, uint256 amount) payable external {}
+    function repay(address tokenAddress, uint256 amount) payable external {}
+    function liquidate(address user, address tokenAddress, uint256 amount) payable external {}
+    function withdraw(address tokenAddress, uint256 amount) payable external {}
+    function getAccruedSupplyAmount(address token) payable external returns (uint) {}
 
 }
